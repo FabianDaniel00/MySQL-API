@@ -7,4 +7,6 @@ const connection = mysql.createConnection({
   database: "be9tp80jickpcm8zwqea",
 });
 
-export default connection;
+const api_port = 4000;
+
+export { connection, api_port };

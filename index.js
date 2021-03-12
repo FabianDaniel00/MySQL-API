@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import connection from "./db-config.js";
+import { connection, api_port } from "./db-config.js";
 import bodyParser from "body-parser";
 
 import getProducts from "./getProducts.js";
@@ -32,8 +32,7 @@ updateProduct(app, connection);
 
 deleteProduct(app, connection);
 
-const port = 8080;
 app.listen(
-  port,
-  console.log("\x1b[36m", `Products server listening on port ${port}`)
+  api_port,
+  console.log("\x1b[36m", `Products server listening on port ${api_port}`)
 );
