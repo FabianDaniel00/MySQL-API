@@ -32,7 +32,7 @@ updateProduct(app, connection);
 
 deleteProduct(app, connection);
 
-const port = 4000;
+const port = 8080;
 app.listen(
   port,
   console.log("\x1b[36m", `Products server listening on port ${port}`)
