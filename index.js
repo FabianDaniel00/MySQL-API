@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { connection } = require("./db-config.js");
 const bodyParser = require("body-parser");
+
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -17,8 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 connection.connect((err) => {
   if (err) {
-    console.log(err);
-    return err;
+    console.log("\x1b[31m", err.message);
+    return err.message;
   }
 });
 
@@ -35,16 +36,25 @@ updateProduct(app, connection);
 deleteProduct(app, connection);
 
 if (process.env.USE_API_PORT === "true") {
-  app.listen(
-    process.env.API_PORT,
-    console.log(
-      "\x1b[36m",
-      `Products server listening on port: ${process.env.API_PORT}...`,
-      "\x1b[37m"
-    )
-  );
+  app.listen(process.env.API_PORT, (err) => {
+    if (err) {
+      console.log("\x1b[31m", err.message);
+      return err.message;
+    } else {
+      console.log(
+        "\x1b[36m",
+        `Products server listening on port: ${process.env.API_PORT}...`,
+        "\x1b[37m"
+      );
+    }
+  });
 } else {
-  app.listen(
-    console.log("\x1b[36m", `Products server is listening...`, "\x1b[37m")
-  );
+  app.listen((err) => {
+    if (err) {
+      console.log("\x1b[31m", err.message);
+      return err.message;
+    } else {
+      console.log("\x1b[36m", `Products server is listening...`, "\x1b[37m");
+    }
+  });
 }
