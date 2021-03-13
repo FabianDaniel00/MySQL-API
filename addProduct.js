@@ -48,4 +48,4 @@ const addProduct = (app, connection) => {
   });
 };
 
-export default addProduct;
+exports.addProduct = addProduct;

@@ -50,4 +50,4 @@ const updateProduct = (app, connection) => {
   });
 };
 
-export default updateProduct;
+exports.updateProduct = updateProduct;

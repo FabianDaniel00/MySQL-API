@@ -1,15 +1,14 @@
-import express from "express";
-import cors from "cors";
-import connection from "./db-config.js";
-import bodyParser from "body-parser";
-import dotenv from "dotenv";
-
+const express = require("express");
+const cors = require("cors");
+const { connection } = require("./db-config.js");
+const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 dotenv.config();
 
-import getProducts from "./getProducts.js";
-import addProduct from "./addProduct.js";
-import updateProduct from "./updateProduct.js";
-import deleteProduct from "./deleteProduct.js";
+const { getProducts } = require("./getProducts.js");
+const { addProduct } = require("./addProduct.js");
+const { updateProduct } = require("./updateProduct.js");
+const { deleteProduct } = require("./deleteProduct.js");
 
 const app = express();
 app.use(cors());

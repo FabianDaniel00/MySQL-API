@@ -17,4 +17,4 @@ const getProducts = (app, connection) => {
   });
 };
 
-export default getProducts;
+exports.getProducts = getProducts;

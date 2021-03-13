@@ -34,4 +34,4 @@ const deleteProduct = (app, connection) => {
   });
 };
 
-export default deleteProduct;
+exports.deleteProduct = deleteProduct;
