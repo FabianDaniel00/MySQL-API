@@ -1,7 +1,10 @@
 import express from "express";
 import cors from "cors";
-import { connection, api_port } from "./db-config.js";
+import connection from "./db-config.js";
 import bodyParser from "body-parser";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 import getProducts from "./getProducts.js";
 import addProduct from "./addProduct.js";
@@ -32,7 +35,17 @@ updateProduct(app, connection);
 
 deleteProduct(app, connection);
 
-app.listen(
-  api_port,
-  console.log("\x1b[36m", `Products server listening on port ${api_port}`)
-);
+if (process.env.USE_API_PORT === "true") {
+  app.listen(
+    process.env.API_PORT,
+    console.log(
+      "\x1b[36m",
+      `Products server listening on port: ${process.env.API_PORT}...`,
+      "\x1b[37m"
+    )
+  );
+} else {
+  app.listen(
+    console.log("\x1b[36m", `Products server is listening...`, "\x1b[37m")
+  );
+}
