@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-connection.connect((err) => {
+connection.getConnection((err) => {
   if (err) {
     console.log("\x1b[31m", err.message);
     return err.message;
